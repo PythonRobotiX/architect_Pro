@@ -59,7 +59,7 @@ def contact():
     
     return jsonify({"message": "Contact form submitted successfully"}), 201
 
-@app.route('/health', methods=['GET'])
+@app.route('/healthz', methods=['GET'])
 def health_check():
     return jsonify({"status": "healthy"}), 200
 
