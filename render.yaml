@@ -9,6 +9,20 @@ services:
     envVars:
       - key: FLASK_ENV
         value: production
+      - key: DATABASE_URL
+        value: postgres://admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
+      - key: MAIL_SERVER
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USE_TLS
+        value: True
+      - key: MAIL_USERNAME
+        value: your-email@gmail.com
+      - key: MAIL_PASSWORD
+        value: your-email-password
+      - key: MAIL_DEFAULT_SENDER
+        value: your-email@gmail.com
 
   - type: web
     name: arya-architect-frontend
