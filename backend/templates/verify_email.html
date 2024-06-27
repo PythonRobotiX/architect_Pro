@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form method="POST" action="{{ url_for('auth_bp.verify_email') }}">
+        <input type="text" name="verification_code" placeholder="Enter your verification code" required>
+        <button type="submit">Verify</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Contact Us</h2>
+    <form method="POST" action="{{ url_for('contact_bp.contact') }}" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="phone" placeholder="Your Phone Number" required>
+        <input type="email" name="email" placeholder="Your Email Address" required>
+        <textarea name="question" placeholder="Your Question or Comments" required></textarea>
+        <input type="file" name="file" accept=".pdf,.jpeg,.jpg,.png,.mpeg,.mp4" multiple>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

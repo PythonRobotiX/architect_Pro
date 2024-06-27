@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: arya-architect-backend
+    env: docker
+    plan: free
+    buildCommand: ""
+    startCommand: "gunicorn -b 0.0.0.0:5000 app:app"
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: FLASK_ENV
+        value: production
+
+  - type: web
+    name: arya-architect-frontend
+    env: docker
+    plan: free
+    buildCommand: ""
+    startCommand: "nginx -g 'daemon off;'"
+    dockerfilePath: ./frontend/Dockerfile

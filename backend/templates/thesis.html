@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Create Your Smart Thesis</h2>
+    <form method="POST" action="{{ url_for('thesis_bp.create_smart_thesis') }}">
+        <textarea name="description" placeholder="Dear user, please provide a description of your desired thesis template and layout, and I will create one for you." required></textarea>
+        <button type="submit">Submit</button>
+        <button type="submit" formaction="{{ url_for('thesis_bp.email_smart_thesis') }}">Email</button>
+    </form>
+{% endblock %}

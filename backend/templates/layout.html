@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arya Architect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder">Admin Photo</div>
+            <div class="toggle-lang"><a href="#">En/Fa</a></div>
+            <div class="account-links">
+                <a href="{{ url_for('auth_bp.create_account') }}">Create Account</a> | 
+                <a href="{{ url_for('auth_bp.login') }}">Login</a>
+            </div>
+        </div>
+        <h1 class="motto">Designing Tomorrow's Spaces, Today</h1>
+    </header>
+    <div class="main-container">
+        <aside class="sidebar left">
+            <ul>
+                <li><a href="#">Arya's Biography</a></li>
+                <li><a href="{{ url_for('portfolio_bp.show_portfolio') }}">Arya's Portfolio</a></li>
+                <li><a href="{{ url_for('r_d_bp.show_r_d') }}">Research and Development (R&D)</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="{{ url_for('contact_bp.contact') }}">Contact us</a></li>
+            </ul>
+        </aside>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <aside class="sidebar right">
+            <ul>
+                <li><a href="{{ url_for('portfolio_bp.create_smart_portfolio') }}">Create your smart portfolios</a></li>
+                <li><a href="{{ url_for('thesis_bp.create_smart_thesis') }}">Create your smart thesis</a></li>
+                <li><a href="{{ url_for('r_d_bp.history_of_architecture') }}">History of Architecture</a></li>
+            </ul>
+        </aside>
+    </div>
+</body>
+</html>

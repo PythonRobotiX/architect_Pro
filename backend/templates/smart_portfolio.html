@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Create Your Smart Portfolio</h2>
+    <form method="POST" action="{{ url_for('portfolio_bp.create_smart_portfolio') }}">
+        <textarea name="description" placeholder="Dear user, please provide a description of your desired portfolio template and layout, and I will create one for you." required></textarea>
+        <button type="submit">Submit</button>
+        <button type="submit" formaction="{{ url_for('portfolio_bp.email_smart_portfolio') }}">Email</button>
+    </form>
+{% endblock %}

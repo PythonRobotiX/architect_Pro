@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.left-sidebar, .right-sidebar {
+    width: 200px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    overflow-y: auto;
+}
+
+.left-sidebar {
+    left: 0;
+}
+
+.right-sidebar {
+    right: 0;
+}
+
+.left-sidebar h2, .right-sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.left-sidebar ul, .right-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-sidebar ul li, .right-sidebar ul li {
+    margin: 10px 0;
+}
+
+.left-sidebar ul li a, .right-sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.left-sidebar ul li a:hover, .right-sidebar ul li a:hover {
+    background-color: #e9ecef;
+}
+
+.content {
+    margin: 20px 220px; /* Adjust margins to fit sidebars */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
