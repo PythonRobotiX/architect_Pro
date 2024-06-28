@@ -3,9 +3,9 @@ services:
     name: arya-architect-backend
     env: docker
     plan: free
+    dockerfilePath: ./backend/Dockerfile
     buildCommand: ""
     startCommand: "gunicorn -b 0.0.0.0:5000 app:app"
-    dockerfilePath: ./backend/Dockerfile
     envVars:
       - key: FLASK_ENV
         value: production
@@ -14,9 +14,9 @@ services:
       - key: MAIL_SERVER
         value: smtp.gmail.com
       - key: MAIL_PORT
-        value: 587
+        value: "587"
       - key: MAIL_USE_TLS
-        value: True
+        value: "True"
       - key: MAIL_USERNAME
         value: your-email@gmail.com
       - key: MAIL_PASSWORD
@@ -28,6 +28,6 @@ services:
     name: arya-architect-frontend
     env: docker
     plan: free
+    dockerfilePath: ./frontend/Dockerfile
     buildCommand: ""
     startCommand: "nginx -g 'daemon off;'"
-    dockerfilePath: ./frontend/Dockerfile
