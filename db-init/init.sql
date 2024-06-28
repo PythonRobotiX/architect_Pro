@@ -4,9 +4,9 @@ BEGIN
    IF NOT EXISTS (
       SELECT 
       FROM   pg_catalog.pg_roles 
-      WHERE  rolname = 'admin_db') THEN
+      WHERE  rolname = 'arya_web_db') THEN
 
-      CREATE ROLE admin_db WITH LOGIN PASSWORD 'Gab5i9A6k8Ry';
+      CREATE ROLE arya_admin_db WITH LOGIN PASSWORD 'Gab5i9A6k8Ry';
    END IF;
 END
 $$;
@@ -24,4 +24,4 @@ BEGIN
 END
 $$;
 
-GRANT ALL PRIVILEGES ON DATABASE arya_web_db TO admin_db;
+GRANT ALL PRIVILEGES ON DATABASE arya_web_db TO arya_admin_db;

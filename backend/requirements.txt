@@ -8,3 +8,5 @@ python-dotenv
 flask-mail
 APScheduler
 Flask-Caching
+Flask-Migrate
+
