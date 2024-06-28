@@ -15,7 +15,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: backend/Dockerfile
+      dockerfile: Dockerfile
     environment:
       FLASK_ENV: production
       DATABASE_URL: postgresql://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
@@ -29,12 +29,3 @@ services:
       - db
     ports:
       - "5000:5000"
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    depends_on:
-      - backend

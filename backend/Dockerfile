@@ -4,6 +4,9 @@ FROM python:3.9-slim
 # Set the working directory in the container
 WORKDIR /app
 
+# Set environment variables
+ENV PYTHONPATH=/app
+
 # Copy the requirements file into the container
 COPY backend/requirements.txt .
 
@@ -17,4 +20,4 @@ COPY backend/ .
 EXPOSE 5000
 
 # Run database migrations before starting the server
-CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 app:app"]
+CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 backend:app"]
