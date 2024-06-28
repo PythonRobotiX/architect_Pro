@@ -20,4 +20,4 @@ COPY backend/ .
 EXPOSE 5000
 
 # Run database migrations before starting the server
-CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 backend:app"]
+CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 'backend:create_app()'"]

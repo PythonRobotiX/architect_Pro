@@ -1,7 +1,7 @@
-# manage.py
 from flask.cli import FlaskGroup
-from app import app, db
+from backend import create_app, db
 
+app = create_app()
 cli = FlaskGroup(app)
 
 if __name__ == "__main__":
