@@ -14,7 +14,7 @@ services:
       - "5000:5000"
     volumes:
       - .:/app
-    command: ["flask", "db", "upgrade"]
+    command: ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 app:app"]
 
   frontend:
     build:

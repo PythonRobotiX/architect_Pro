@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session, current_app as app
 import openai
+from flask_mail import Message
+from backend import mail
 
 thesis_bp = Blueprint('thesis_bp', __name__)
 
