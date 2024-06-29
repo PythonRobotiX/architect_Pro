@@ -4,10 +4,11 @@ services:
     env: docker
     plan: free
     dockerfilePath: backend/Dockerfile
-    rootDir: .
+    buildCommand: ""
+    startCommand: ""
     envVars:
       - key: FLASK_ENV
-        value: production
+        value: development
       - key: DATABASE_URL
         value: postgres://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
       - key: MAIL_SERVER
@@ -22,10 +23,10 @@ services:
         value: "eaqttnictahosgro"
       - key: MAIL_DEFAULT_SENDER
         value: roboticdock@gmail.com
-
   - type: web
     name: arya-architect-frontend
     env: docker
     plan: free
     dockerfilePath: frontend/Dockerfile
-    rootDir: .
+    buildCommand: ""
+    startCommand: ""
