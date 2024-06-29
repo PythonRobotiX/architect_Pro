@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Ensure the backend directory is in the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'backend')))
+
 from backend import create_app
 
 app = create_app()
