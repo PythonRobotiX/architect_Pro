@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from flask_mail import Message
-from app import app, db, mail
-from models import User
+from backend import db, mail
+from backend.models import User
 import random
 
 auth_bp = Blueprint('auth_bp', __name__)
