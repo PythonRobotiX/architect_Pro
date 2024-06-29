@@ -1,40 +1,42 @@
 version: '3.8'
 
 services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: backend
+    restart: always
+    environment:
+      - FLASK_APP=backend/app.py
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    command: ["flask", "db", "upgrade"]
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
   db:
     image: postgres:13
+    container_name: db
+    restart: always
     environment:
       POSTGRES_USER: arya_admin_db
       POSTGRES_PASSWORD: Gab5i9A6k8Ry
       POSTGRES_DB: arya_web_db
     volumes:
-      - ./db-init:/docker-entrypoint-initdb.d
-    ports:
-      - "5432:5432"
+      - postgres_data:/var/lib/postgresql/data
 
-  backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    environment:
-      FLASK_ENV: production
-      DATABASE_URL: postgresql://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
-      MAIL_SERVER: smtp.gmail.com
-      MAIL_PORT: "587"
-      MAIL_USE_TLS: "True"
-      MAIL_USERNAME: roboticdock@gmail.com
-      MAIL_PASSWORD: "eaqttnictahosgro"
-      MAIL_DEFAULT_SENDER: roboticdock@gmail.com
-    depends_on:
-      - db
-    ports:
-      - "5000:5000"
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+volumes:
+  postgres_data:
