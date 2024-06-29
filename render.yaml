@@ -4,6 +4,7 @@ services:
     env: docker
     plan: free
     dockerfilePath: backend/Dockerfile
+    rootDir: backend
     envVars:
       - key: FLASK_ENV
         value: production
@@ -27,3 +28,4 @@ services:
     env: docker
     plan: free
     dockerfilePath: frontend/Dockerfile
+    rootDir: frontend

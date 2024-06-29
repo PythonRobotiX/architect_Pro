@@ -1,11 +1,9 @@
-# /Applications/myApps/arya_architect/frontend/Dockerfile
-
-# Stage 1: Build the React app
+# Stage 1: Build the React app with Webpack
 FROM node:14-alpine as build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
-COPY . ./
+COPY . .
 RUN npm run build
 
 # Stage 2: Serve the React app with Nginx
