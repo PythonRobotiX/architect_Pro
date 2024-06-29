@@ -8,9 +8,9 @@ services:
     startCommand: ""
     envVars:
       - key: FLASK_ENV
-        value: development
+        value: production
       - key: DATABASE_URL
-        value: postgresql://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
+        value: postgres://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
       - key: MAIL_SERVER
         value: smtp.gmail.com
       - key: MAIL_PORT
@@ -18,15 +18,19 @@ services:
       - key: MAIL_USE_TLS
         value: "True"
       - key: MAIL_USERNAME
-        value: roboticdock@gmail.com
+        value: your-email@gmail.com
       - key: MAIL_PASSWORD
-        value: "eaqttnictahosgro"
+        value: your-email-password
       - key: MAIL_DEFAULT_SENDER
-        value: roboticdock@gmail.com
+        value: your-email@gmail.com
+
   - type: web
     name: arya-architect-frontend
     env: docker
     plan: free
     dockerfilePath: frontend/Dockerfile
-    buildCommand: ""
-    startCommand: ""
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
