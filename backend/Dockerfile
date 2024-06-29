@@ -19,5 +19,9 @@ COPY backend/config.py /app/config.py
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
+# Set the environment variables
+ENV FLASK_APP=backend.app
+ENV FLASK_ENV=development
+
 # Run database migrations before starting the server
 CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 backend.app:app"]
