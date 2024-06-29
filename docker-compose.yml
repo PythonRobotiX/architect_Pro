@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: backend/Dockerfile
     environment:
-      FLASK_ENV: development
+      FLASK_ENV: production
       DATABASE_URL: postgresql://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
       MAIL_SERVER: smtp.gmail.com
       MAIL_PORT: "587"

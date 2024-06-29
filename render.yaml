@@ -10,7 +10,7 @@ services:
       - key: FLASK_ENV
         value: development
       - key: DATABASE_URL
-        value: postgres://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
+        value: postgresql://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
       - key: MAIL_SERVER
         value: smtp.gmail.com
       - key: MAIL_PORT

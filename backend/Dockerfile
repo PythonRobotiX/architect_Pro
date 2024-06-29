@@ -10,15 +10,15 @@ COPY requirements.txt .
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the backend directory contents into the container
+# Copy the rest of the working directory contents into the container
 COPY backend/ /app/backend
+
+# Set environment variables
+ENV FLASK_APP=backend.app
+ENV FLASK_ENV=development
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
-
-# Set the environment variables
-ENV FLASK_APP=backend.app
-ENV FLASK_ENV=development
 
 # Run database migrations before starting the server
 CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 backend.app:app"]
