@@ -1,46 +1,39 @@
 version: '3.8'
 
 services:
-  backend:
-    build:
-      context: ./backend
-    command: flask db upgrade && gunicorn --bind 0.0.0.0:5000 app:app
-    environment:
-      - FLASK_APP=app.py
-      - FLASK_ENV=production
-      - DATABASE_URL=${DATABASE_URL}
-      - SECRET_KEY=${SECRET_KEY}
-      - MAIL_SERVER=${MAIL_SERVER}
-      - MAIL_PORT=${MAIL_PORT}
-      - MAIL_USE_TLS=${MAIL_USE_TLS}
-      - MAIL_USERNAME=${MAIL_USERNAME}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
-      - MAIL_DEFAULT_SENDER=${MAIL_DEFAULT_SENDER}
-    volumes:
-      - ./backend:/app
-    ports:
-      - "5000:5000"
-    depends_on:
-      - db
-
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: arya_admin_db
+      POSTGRES_PASSWORD: Gab5i9A6k8Ry
       POSTGRES_DB: arya_web_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      FLASK_ENV: production
+      DATABASE_URL: postgresql://arya_admin_db:Gab5i9A6k8Ry@db:5432/arya_web_db
+      MAIL_SERVER: smtp.gmail.com
+      MAIL_PORT: "587"
+      MAIL_USE_TLS: "True"
+      MAIL_USERNAME: roboticdock@gmail.com
+      MAIL_PASSWORD: "eaqttnictahosgro"
+      MAIL_DEFAULT_SENDER: roboticdock@gmail.com
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
 
   frontend:
     build:
-      context: ./frontend
-    volumes:
-      - ./frontend:/app
+      context: frontend
     ports:
       - "80:80"
     depends_on:
       - backend
-
-volumes:
-  postgres_data:
