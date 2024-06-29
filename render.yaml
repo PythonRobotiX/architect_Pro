@@ -4,8 +4,6 @@ services:
     env: docker
     plan: free
     dockerfilePath: backend/Dockerfile
-    buildCommand: ""
-    startCommand: ""
     envVars:
       - key: FLASK_ENV
         value: production
@@ -30,7 +28,6 @@ services:
     plan: free
     dockerfilePath: frontend/Dockerfile
     buildCommand: npm install
-    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
